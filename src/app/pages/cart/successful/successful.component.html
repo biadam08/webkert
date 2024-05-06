@@ -1,0 +1,19 @@
+<div class="main-container">
+  <div *ngIf="orderDetails" class="order-container">
+    <h2>Sikeres rendelés!</h2>
+    <h2>Rendelés részletei</h2>
+    <div class="order-info">
+      <p><strong>Rendelés dátuma:</strong> {{ orderDetails.datePlaced | dateFormat}} </p>
+      <p><strong>Email:</strong> {{ orderDetails.email }}</p>
+    </div>
+
+    <h3>Termékek</h3>
+    <mat-card class="cart-card" *ngFor="let item of orderDetails.products">
+      <mat-card-header>
+        <mat-card-title>{{ item.name }}</mat-card-title>
+        <mat-card-subtitle>{{ item.price }} Ft</mat-card-subtitle>
+      </mat-card-header>
+      <img mat-card-image [src]="item.imageUrl" alt="{{ item.name }}">
+    </mat-card>
+    </div>
+  </div>

@@ -1,0 +1,24 @@
+<div class="orders-container">
+    <h1>Rendelések</h1>
+    <mat-card *ngFor="let order of orders | async" class="order-card">
+      <mat-card-header>
+        <mat-card-title>Rendelés dátuma: {{ order.datePlaced | dateFormat }}</mat-card-title>
+        <mat-card-subtitle>Email: {{ order.email }}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <div *ngIf="users[order.email] as user">
+          <p>Név: {{ user.name.lastname }} {{ user.name.firstname }}</p>
+          <p>Telefonszám: {{ user.phone }} </p>
+          <p>Cím: {{ user.address.city }} {{ user.address.street }}</p>
+        </div>
+        <div class="products-list">
+          <ul>
+            <li *ngFor="let product of order.products">
+              {{ product.name }} ({{ product.id }}): {{ product.price }} Ft
+            </li>
+          </ul>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  

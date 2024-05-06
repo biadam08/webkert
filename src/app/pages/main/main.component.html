@@ -1,0 +1,36 @@
+<div class="main-container">
+    <div class="categories-container">
+        <h2>Kategóriák</h2>
+        <div class="categories-list">
+            <mat-card class="category-card" *ngFor="let category of categories | async" [routerLink]="['/category', category.name2]">
+                <mat-card-header>
+                    <mat-card-title>{{ category.name }}</mat-card-title>
+                </mat-card-header>
+            </mat-card>
+        </div>
+    </div>
+
+    <div class="products-container">
+        <h2>Termékek</h2>
+        <div class="products-list">
+            <mat-card class="product-card" *ngFor="let product of products | async">
+                <mat-card-header>
+                    <mat-card-title>{{ product.name }}</mat-card-title>
+                    <mat-card-subtitle>{{ product.price }} Ft</mat-card-subtitle>
+                </mat-card-header>
+                <img mat-card-image [src]="product.imageUrl" alt="{{ product.name }}">
+                <mat-card-content>
+                    <p>{{ product.description | slice:0:100 }}...</p>
+                </mat-card-content>
+                <mat-card-actions>
+                    <button mat-button (click)="view(product)">Megtekintés</button>
+
+                    <button mat-button (click)="addToCart(product)">Kosárba</button>
+                </mat-card-actions>
+                <div *ngIf="cartSuccess[product.id]" class="success-message">
+                    Sikeresen kosárba téve!
+                </div>
+            </mat-card>
+        </div>
+    </div>
+</div>

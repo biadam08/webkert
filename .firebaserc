@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "webkert-2024": {
+      "hosting": {
+        "kerteszeti-webshop": [
+          "webkert-2024"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "webkert-2024"
+  }
+}

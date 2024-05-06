@@ -1,0 +1,29 @@
+<div class="main-container">
+  <h3>Kosár</h3>
+
+  <mat-card class="cart-card" *ngFor="let item of cartItems">
+    <mat-card-header>
+      <mat-card-title>{{ item.name }}</mat-card-title>
+      <mat-card-subtitle>{{ item.price }} Ft</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image [src]="item.imageUrl" alt="{{ item.name }}">
+  </mat-card>
+  <div *ngIf="cartItems.length == 0">
+    <p>Üres a kosarad. Válogass a termékek közül!</p>
+  </div>
+  <hr/>
+  <div *ngIf="user && cartItems.length > 0" class="user-info">
+    <h4>Szállítási adatok:</h4>
+    <p><strong>Név:</strong> {{ user.name.lastname }} {{ user.name.firstname }}</p>
+    <p><strong>Telefonszám:</strong> {{ user.phone }} </p>
+    <p><strong>Cím:</strong> {{ user.address.city }} {{ user.address.street }}</p>
+    <button class="navigate-profile" [routerLink]="'/profile'">Adatok szerkesztése</button>
+    <hr/>
+  </div>
+  <div *ngIf="cartItems.length > 0" class="order-button-container">
+    <button class="order-button" (click)="placeOrder()">Megrendelés</button>
+  </div>
+  <div *ngIf="cartItems.length > 0" class="order-button-container">
+    <button class="clear-button" (click)="clearCart()">Kosár ürítése</button>
+  </div>
+</div>

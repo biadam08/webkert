@@ -1,0 +1,35 @@
+<div class="profile-container">
+    <div *ngIf="updateSuccess === true" class="update-success-message">
+        Sikeres módosítás!
+      </div>
+      <form *ngIf="user" (ngSubmit)="updateUser()">
+      <div class="form-group">
+        <label for="lastname">Vezetéknév</label>
+        <input type="text" id="lastname" [(ngModel)]="user.name.lastname" name="lastname" required>
+      </div>
+
+      <div class="form-group">
+        <label for="firstname">Keresztnév</label>
+        <input type="text" id="firstname" [(ngModel)]="user.name.firstname" name="firstname" required>
+      </div>
+
+      <div class="form-group">
+        <label for="phone">Telefonszám</label>
+        <input type="text" id="phone" [(ngModel)]="user.phone" name="phone" required>
+      </div>
+  
+      <div class="form-group">
+        <label for="city">Város</label>
+        <input type="text" id="city" [(ngModel)]="user.address.city" name="city" required>
+      </div>
+  
+      <div class="form-group">
+        <label for="street">Utca</label>
+        <input type="text" id="street" [(ngModel)]="user.address.street" name="street" required>
+      </div>
+  
+      <button type="submit" class="btn btn-primary">Mentés</button>
+      <button type="button" class="btn btn-delete" (click)="deleteUser()">Profil Törlése</button>
+    </form>
+  </div>
+  
