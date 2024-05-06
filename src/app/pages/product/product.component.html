@@ -1,21 +1,20 @@
 <div class="products-container">
-    <h2>Termékek</h2>
-    <div class="products-list">
+    <div class="products-list" *ngIf="product">
         <mat-card class="product-card">
             <mat-card-header>
-                <mat-card-title>{{ product?.name }}</mat-card-title>
+                <mat-card-title>{{ product.name }}</mat-card-title>
             </mat-card-header>
-            <img mat-card-image [src]="product?.imageUrl" alt="{{ product?.name }}">
+            <img mat-card-image [src]="product.imageUrl" alt="{{ product.name }}">
             <mat-card-content>
-                <p>{{ product?.description }}</p>
+                <p>{{ product.description }}</p>
             </mat-card-content>
             <mat-card-content>
-                <p class="price">Ár: {{ product?.price }} Ft</p>
+                <p class="price">Ár: {{ product.price }} Ft</p>
             </mat-card-content>
             <mat-card-actions>
-                <button mat-button (click)="addToCart(product!)">Kosárba</button>
+                <button mat-button (click)="addToCart(product)">Kosárba</button>
             </mat-card-actions>
-            <div *ngIf="cartSuccess[product!.id]" class="success-message">
+            <div *ngIf="cartSuccess[product.id]" class="success-message">
                 Sikeresen kosárba téve!
             </div>
         </mat-card>

@@ -15,8 +15,7 @@ export class ProductComponent implements OnInit {
   cartSuccess: { [productId: string]: boolean } = {};
   product: Product | undefined;
 
-  constructor(private route: ActivatedRoute, private productService: ProductService, private cartService : CartService) {}
-
+  constructor(private route: ActivatedRoute, private productService: ProductService, private cartService: CartService) { }
   ngOnInit() {
     this.route.params.subscribe(params => {
       const productId = params['id'];
@@ -29,11 +28,10 @@ export class ProductComponent implements OnInit {
             console.log('Nincs ilyen ID-jú termék');
           }
         );
-      } else {
-        console.log('Nincs kategória név.');
       }
     });
   }
+  
 
   addToCart(product: Product) {
     this.cartService.addToCart(product);
